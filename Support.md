@@ -1,5 +1,5 @@
-#TCPvsUDP
-##
+TCP vs UDP
+
 TCP:
 - Transmission Control Protocol
 - Connection oriented
@@ -16,7 +16,7 @@ UDP:
 - Not guarantee and unreliable protocol
 
 ---
-##
+
 SSH:
 SSH is stand for Secure Shell. TCP port 22 is asssigned to this protocol. It was designed to replace Telnet(port 23) and other unsecured protocols. The protocol is used to start the SSH client session that enables secure connection to the SSH server on a remote machine.
 
