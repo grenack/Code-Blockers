@@ -70,7 +70,7 @@ SootSplash Server:
 
 SootSplash Server:
 
-![Disconnected Sootsplash](pic/disconect_sootsplash.png)
+![Disconnected Sootsplash](pic/disconnect_sootsplash.png)
 
 Both Servers:
 
