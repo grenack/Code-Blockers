@@ -74,7 +74,7 @@ SootSplash Server:
 
 Both Servers:
 
-![Pi_n_SootSplash](Pi_n_Sootsplash_minecraft.png)
+![Pi_n_SootSplash](pic/Pi_n_Sootsplash_minecraft.png)
 
 Thanks while waiting more updates :-D
 
