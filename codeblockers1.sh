@@ -67,7 +67,7 @@ echo "lets save our working serving"
 cd /opt
 tar -zcvf codebminecraft_backup.tar.gz minecfraft
 echo "lets harden our firewall"
-gsudo iptables -A INPUT -p tcp --dport 25565 -m state --state NEW -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 25565 -m state --state NEW -j ACCEPT
 echo "lets make the script to start on bootup"
 sudo nano /etc/rc.local
 echo "add the foolowing into the line before exit 0... screen -dm -S minecraft /opt/scripts/codebminecraft.sh"
