@@ -62,7 +62,7 @@ The following characteristics describe the TCP;
  b. SSH : Secure Shell is the protocol used to access any of the servers
 
  c. Firewall: The server needs to be protected from external access. The following will be added in the iptables.
-**-A INPUT -p tcp -m state --state NEW --dport 25565 -j ACCEPT**
+**`-A INPUT -p tcp -m state --state NEW --dport 25565 -j ACCEPT`**
 
 
 ## Raspberry Installation <a name="Raspberry"></a>
@@ -73,25 +73,57 @@ The following characteristics describe the TCP;
 
 ## Difficulties Encountered <a name="Difficulties"></a>
 
+When we issued the java build command we encountered this error when the script ran;
+
+_/usr/bin/java: 1: /usr/bin/java: Syntax error: word unexpected (expecting ")")_
+
+**To solve the above we used the open jdk environment as our installation was based on Oracle Java**
+To install open jdk the following commands should be used;
+
+`sudo add-apt-repository ppa:openjdk-r/ppa`  
+`sudo apt-get update`   
+`sudo apt-get install openjdk-8-jdk`
+
+This defines the “PPA for OpenJDK uploads (restricted)” as an additional package repositiory, updates your information, and installs the package with its dependencies (from that repository). 
+It should be noted that each time you write a command which has to alter system files **_sudo_** must be used as this is a secured server. This is different from your local server.
+
+ When we ran our server it could not bind to port 25565 as another instance was running
+so we did the following;
+_`sudo lsof -n -i`_
+
+To kiil the process and finally make the server start.
+_sudo fuser -k 25565/tcp_
+
+This helped me to restart the server. But during class discussions, we noticed we had to work with firewalls.
+The _iptables_ proofed that the tcp port 25565 was not listed and had to be added.
+The following commands were used;
+We applied this rule; _`sudo /sbin/iptables -A INPUT -p tcp --dport 25565 -m state --state NEW -j ACCEPT`_
+While in class the following command was utilised.
+`sudo iptables -A INPUT -p tcp --dport 25565 -m state --state NEW -j ACCEPT`
+But there was an additional configuration which was issued and I will present it in my next updates. 
+
+The current issue we face is the fact that once there is a broken pipe, our server cannot restart. This we have to figure out. Likewise i changed the rc.local to launch the minecraft server from startup if the main server reboots. I have not tested this yet!!
+I also made installation scripts for [Raspberry](https://github.com/loknjinu13/week14/blob/master/codeblockers.sh) and [Linux](https://github.com/loknjinu13/week14/blob/master/codeblockers1.sh) platforms as there is a hardware difference. 
+
 
 ## Screen <a name="Screen"></a>
-## How we used Screen in our Minecraft Server.
+#### How we used Screen in our Minecraft Server.
 Screen is a full-screen window manager that multiplexes a physical terminal between several processes, typically interactive shells.
-When a program terminates, _screen_ kills teh window that contained it. 
+When a program terminates, _screen_ kills the window that contained it. 
 
 **TMUX** is another full-screen window manager with capabilities like _screen_ and is being developed.
 These softwares permit us to continue from wherever we stopped in our terminals.
 We installed screen to assist us control our Minecraft Server from its terminal. 
 This is why we include screen in the automatic script to run the server once Ubuntu server boots. This permits the Administrator to run the saerver session.
-The following command in our _codebminecraft.sh script_explains it better;
+The following command in our _codebminecraft.sh script_ explains it better;
 When editing the rc.local file
 sudo nano /etc/rc.local
 add the foolowing into the line before exit 0...
- screen -dm -S minecraft /opt/scripts/codebminecraft.sh 
+ `screen -dm -S minecraft /opt/scripts/codebminecraft.sh`
 
-Whenever the server is running and you closed theterminal before and will want to check the server,
+Whenever the server is running and you closed the terminal before and will want to check the server,
 just run the following command in your session;
-_screen -r_
+`_screen -r_`
 
 
 ## Deployment Success <a name="Deployment"></a>
