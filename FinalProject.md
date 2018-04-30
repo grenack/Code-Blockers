@@ -1,25 +1,24 @@
 # CSCI2461-71.... 
 # FINAL PROJECT
 # TEAM; CODE BLOCKERS
-#####1. Adam T (Testing) - [Github](https://github.com/Add-man)
+##### 1. Adam T (Testing) - [Github](https://github.com/Add-man)
 
-#####2. Fongoh LOKNJINU (Research) - [Github](https://github.com/loknjinu13)
+##### 2. Fongoh LOKNJINU (Research) - [Github](https://github.com/loknjinu13)
 
-#####3. Vangx033 (Testing) -[Github](https://github.com/vangx033)
+##### 3. Vangx033 (Testing) -[Github](https://github.com/vangx033)
 
-#####4. Glanel Houenouvi (Documentation) - [Github](href="https://github.com/grenack)
+##### 4. Glanel Houenouvi (Documentation) - [Github](href="https://github.com/grenack)
 
-#####5. Kasia Lor (Support) - [Github](https://github.com/klor0610)
+##### 5. Kasia Lor (Support) - [Github](https://github.com/klor0610)
 
-This is the first page
+
 
 <div></div>
 
-This is the second page
 # Table of contents
 1. [Introduction](#Introduction)
 2. [Shortcomings](#Shortcomings)
-3. [Hardware Platforms](#Hardware Platforms)
+3. [Hardware Platforms](#Hardware)
 4. [Protocols & Firewall](#Protocols & Firewall)
 5. [Raspberry Installation](#Rasberry Installation)
 6. [SootSplash Installation](#SootSplash Installation)
@@ -42,7 +41,7 @@ Check out our Github accounts to find out more and see the documentation that go
 	- Some team members dropped.
 	- No prior knowledge of the game by remaining team.
 
-## Hardware Platforms <a name="Hardware Platforms"></a>
+## Hardware Platforms <a name="Hardware"></a>
 	a. Raspberry Pi 3(Manual steps Installation)
 	b. Raspberry Pi 3(Script Assisted Installation)
 	c. SootSplash Server 
