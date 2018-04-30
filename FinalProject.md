@@ -19,15 +19,15 @@
 1. [Introduction](#Introduction)
 2. [Shortcomings](#Shortcomings)
 3. [Hardware Platforms](#Hardware)
-4. [Protocols & Firewall](#Protocols & Firewall)
-5. [Raspberry Installation](#Rasberry Installation)
-6. [SootSplash Installation](#SootSplash Installation)
-7. [Difficulties Encountered](#Difficulties Encountered)
+4. [Protocols & Firewall](#Protocols)
+5. [Raspberry Installation](#Rasberry)
+6. [SootSplash Installation](#SootSplash)
+7. [Difficulties Encountered](#Difficulties)
 8. [Screen](#Screen)
-9. [Deployment Success](#Deployment Success)
-10. [Updating Server](#Updating Server)
-11. [Recovering Server](#Recovering Server)
-12. [Backing Up Server](#Backing Up Server)
+9. [Deployment Success](#Deployment)
+10. [Updating Server](#Updating)
+11. [Recovering Server](#Recovering)
+12. [Backing Up Server](#Backing)
 13. [Conclusions](#Conclusions)
 
 ## Introduction <a name="Introduction"></a>
@@ -46,7 +46,7 @@ Check out our Github accounts to find out more and see the documentation that go
 	b. Raspberry Pi 3(Script Assisted Installation)
 	c. SootSplash Server 
 
-## Protocols & Firewall <a name="Protocols & Firewall"></a>
+## Protocols & Firewall <a name="Protocols"></a>
  a. Minecraft is compiled using Java. It will use the Transmission Control Protocol(TCP) of the Internet protocol suite.
 This permits the connection between users while playing the game.
 The following characteristics describe the TCP;
@@ -65,13 +65,13 @@ The following characteristics describe the TCP;
 **-A INPUT -p tcp -m state --state NEW --dport 25565 -j ACCEPT**
 
 
-## Raspberry Installation <a name="Raspberry Installation"></a>
+## Raspberry Installation <a name="Raspberry"></a>
 
 
-## SootSplash Installation <a name="SootSplash Installation"></a>
+## SootSplash Installation <a name="SootSplash"></a>
 
 
-## Difficulties Encountered <a name="Difficulties Encountered"></a>
+## Difficulties Encountered <a name="Difficulties"></a>
 
 
 ## Screen <a name="Screen"></a>
@@ -94,7 +94,7 @@ just run the following command in your session;
 _screen -r_
 
 
-## Deployment Success <a name="Deployment Success"></a>
+## Deployment Success <a name="Deployment"></a>
 It has been an educative ride for our team. Doing research and testing was fun but getting into difficulties was more educative as it opened up more venues for research.
 ** Launch Server**
 
@@ -154,13 +154,13 @@ Both Servers:
 
 ![Pi_n_SootSplash](pic/Pi_n_Sootsplash_minecraft.png)
 
-## Updating Server <a name="Updating Server"></a>
+## Updating Server <a name="Updating"></a>
 
 
-## Recovering Server <a name="Recovering Server"></a>
+## Recovering Server <a name="Recovering"></a>
 
 
-## Backing Up Server <a name="Backing Up Server"></a>
+## Backing Up Server <a name="Backing"></a>
 
 
 ## Conclusions <a name="Conclusions"></a>
