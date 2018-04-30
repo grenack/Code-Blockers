@@ -7,7 +7,7 @@
 
 ##### 3. Vangx033 (Testing) -[Github](https://github.com/vangx033)
 
-##### 4. Glanel Houenouvi (Documentation) - [Github](href="https://github.com/grenack)
+##### 4. Glanel Houenouvi (Documentation) - [Github](https://github.com/grenack)
 
 ##### 5. Kasia Lor (Support) - [Github](https://github.com/klor0610)
 
