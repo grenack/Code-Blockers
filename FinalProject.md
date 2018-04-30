@@ -89,17 +89,22 @@ It should be noted that each time you write a command which has to alter system 
 
  When we ran our server it could not bind to port 25565 as another instance was running
 so we did the following;
+
 _`sudo lsof -n -i`_
 
-To kiil the process and finally make the server start.
-_sudo fuser -k 25565/tcp_
+To kill the process and finally make the server start.
+_`sudo fuser -k 25565/tcp`_
 
 This helped me to restart the server. But during class discussions, we noticed we had to work with firewalls.
 The _iptables_ proofed that the tcp port 25565 was not listed and had to be added.
 The following commands were used;
-We applied this rule; _`sudo /sbin/iptables -A INPUT -p tcp --dport 25565 -m state --state NEW -j ACCEPT`_
+We applied this rule;
+ _`sudo /sbin/iptables -A INPUT -p tcp --dport 25565 -m state --state NEW -j ACCEPT`_
+
 While in class the following command was utilised.
+
 `sudo iptables -A INPUT -p tcp --dport 25565 -m state --state NEW -j ACCEPT`
+
 But there was an additional configuration which was issued and I will present it in my next updates. 
 
 The current issue we face is the fact that once there is a broken pipe, our server cannot restart. This we have to figure out. Likewise i changed the rc.local to launch the minecraft server from startup if the main server reboots. I have not tested this yet!!
@@ -117,8 +122,10 @@ We installed screen to assist us control our Minecraft Server from its terminal.
 This is why we include screen in the automatic script to run the server once Ubuntu server boots. This permits the Administrator to run the saerver session.
 The following command in our _codebminecraft.sh script_ explains it better;
 When editing the rc.local file
-sudo nano /etc/rc.local
-add the foolowing into the line before exit 0...
+
+`sudo nano /etc/rc.local`
+add the following into the line before exit 0...
+
  `screen -dm -S minecraft /opt/scripts/codebminecraft.sh`
 
 Whenever the server is running and you closed the terminal before and will want to check the server,
@@ -140,7 +147,7 @@ Lets use our installed server as an example. In order to play on this Minecraft 
 
 Once your Client software is launched, Choose **Multiplayer**.
 This will lead you to insert the name of the server preferably **Code_B_Minecraft**. 
-The server address will be _167.99.232.136_.
+The server address will be _`167.99.232.136`_.
  **Join The Server** and I will be on alert to Welcome you OnBoard. 
 To **_chat_** while in the server, just type **T** on your keyboard.
 
@@ -188,11 +195,52 @@ Both Servers:
 
 ## Updating Server <a name="Updating"></a>
 
+Mojang releases new versions of minecraft server. It is necessary to upgrade the server when necessary.
+The following process ;
+Login to the server and stop the minecraft server. In the minecraft console type `stop` and hit _enter_.
+`cd /opt`
+`tar -zcvf minecraft_backup.tar.gz minecraft`
+`cd /opt/minecraft`
+`wget https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar -O BuildTools.jar`
+
+Then we rebuild the new  spigot server.
+`sudo java -jar Buildtools.jar --rev 1.12.2`
+
+Then update the _minecraft.sh_ startup script to use the latest jar file.
+`cd /opt/scripts
+`nano minecraft.sh`
+
+Update the command to start the new jar file.
+`cd /opt/minecraft/ && java -Xms1024M -Xmx2048M -jar /opt/minecraft/spigot-1.~~12.2~~.jar nogui
+
+Save the file.
+Restart the server.
 
 ## Recovering Server <a name="Recovering"></a>
 
+It is important to regularly backup your Minecraft server. At times exception errors occur when you log into your minecraft server.
+Or many things disappear from the world. The world may have been corrupted for any number of issues such as software problems or disk errors.
+
+With backups available, restore the previous backup with the following;
+Delete the existing minecraft folder you created
+`cd /opt`
+`sudo rm -r -f minecraft`
+
+Copy the previously saved minecraft.tar.gz file to your /opt folder.
+Restore your minecraft world by
+`tar -zxvf minecraft.tar.gz`
+
+Restart the server and the minecraft server will be successfully restored.
 
 ## Backing Up Server <a name="Backing"></a>
+
+To Backup the server, do the following;
+login to the server
+`cd /opt`
+`tar -zcvf minecraft_backup.tar.gz minecraft`
+Copy the **minecraft_backup.tar.gz** to a safe location. This file will be used to restore your world when needed.
+Do this frequently or use the `cron scheduler` to automate the process at a specified time each day.
+
 
 
 ## Conclusions <a name="Conclusions"></a>
