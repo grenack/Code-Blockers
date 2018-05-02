@@ -9,6 +9,6 @@ ESC - Exit game
 
 Please refer to these two URLs if you are new to minecraft;
 
-How to play: https://www.minecraftopia.com/how_to_play_minecraft
+How to play: http://www.minecraftopia.com/how_to_play_minecraft
 
 Useful keys for the game: https://www.minecraft101.net/g/controls-and-keyboard.html
