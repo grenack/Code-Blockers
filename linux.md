@@ -1,23 +1,18 @@
-##Installation of a Minecraft Raspberry Server
+###Installation of a Minecraft Server on Ubuntu
 
-### Raspberry Pi Model
-It is recommended we use Raspberry 3 with its 1Gigabyte of RAM and a quad core ARM cpu.n\This version does not need overclocking configurations.
-We can download the OS for installation on your raspberry usb micro sd [here](https://www.raspberrypi.org/downloads/raspbian/). 
-Using [etch]()we can make our micro sd card bootable. The Rasbian Stretch version is preferable and you can decide between the Lite or Desktop images.
+### Ubuntu Server
+This will be installed on sootsplash.csci2461.com, a server hosted by Digital Ocean.
 
-### Why Raspberry Pi
-We will use a raspberry Pi for test purposes and to start a small minecraft server for a lan server.
-The tested environment shall be transferable into a dedicated server provided. This dedicated server shall have its server.properties file reconfigured to accomodate the bigger server on a dedicated Linux hardware with Intel/AMD processors. In addition, since Rasbian is a debian distribution, all configurations and instructions would work on Debian servers.
-## Login to your Pi
- Via using your console
+###Login to your server
 
- Via using ssh: ssh pi@address 
+ Via using ssh: ssh `useraccount`@sootsplash.csci2461.com
+ 
 ### Download Java
 Minecraft requires Java to run. We will download the latest Oracle Java.
 We will change to the /opt directory, use wget to download and accept Oracle agreements and then extract contents to the opt folder. The following command will help us;
 - `cd /opt`
-- `sudo wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u161-b12/2f38c3b165be4555a1fa6e98c45e0808/jdk-8u161-linux-arm32-vfp-hflt.tar.gz`
-- `sudo tar -zxvf jdk-8u161-linux-arm32-vfp-hflt.tar.gz`
+- `wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u161-b12/2f38c3b165be4555a1fa6e98c45e0808/jdk-8u161-linux-x64.tar.gz`
+- `tar -zxvf jdk-8u161-linux-x64.tar.gz`
 ### Configuration of Java
 We will configure the Java environment to permit our our system access the java binary and compiler necessary in building our minecraft server.
 We will use the following commands;
@@ -47,21 +42,23 @@ Lets install screen to assist us run the minecraft server console while logged o
 We will install the [Spigot Minecraft Server build](https://www.spigotmc.org).
 Lets create a folder
 
-`cd /home/pi`
+`cd /opt`
 
-`sudo mkdir codeblockers`
+`sudo mkdir minecraft`
 
-`cd codeblockers`
+`cd minecraft`
 
 We will download the buildtools
 - `wget https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar`
 
-Then build our server. This compilation process takes close to an hour on a Pi 3 system.
+Then build our server. This compilation process takes close to 45 minutes on this server.
 - `sudo java -jar BuildTools.jar --rev 1.12.2`
 
-## Configuring the Spigot server
-Once the compilation is completewe should ensure we are in the codeblockers directory and run the server for the first time.
-- `sudo java -Xms512M -Xmx1008M -jar /home/pi/codeblockers/spigot-1.12.2.jar nogui`
+### Configuring the Spigot server
+Once the compilation is completewe should ensure we are in the minecraft directory and run the server for the first time.
+- `sudo java -Xms1024M -Xmx2048M -jar /opt/minecraft/spigot-1.12.2.jar nogui`
+
+Xms1024M and Xms2048M are parameters telling java to start with 1GB of ram as a minimum for the spigot jar file and grow to 2GB maximum.
 We will then accept the EULA agreement after the server stops running.
 - `sudo nano eula.txt`
 
@@ -113,45 +110,43 @@ The following properties are recommended for a start, but you can change server.
 - enable-rcon=false
 
 Now lets rerun our server
-`sudo java -Xms512M -Xmx1008M -jar /home/pi/codeblockers/spigot-1.12.2.jar nogui`
+`sudo java -Xms1024M -Xmx2048M -jar /opt/minecraft/spigot-1.12.2.jar nogui`
 
 
-## Script to Run server
+### Script to Run server
 Lets make the minecraft server to run from a script.
- - `mkdir /home/pi/startup`
-   - `cd /home/pi/startup`
+ - `cd /opt && sudo mkdir scripts`
+   - `cd scripts`
    - `nano minecraft.sh`
 Inside our minecraft.sh, we will add the following scripts.
 
 `#!/bin/bash`
 
-   `cd /home/pi/codeblockers/ && java -Xms512M -Xmx1008M -jar /home/pi/codeblockers/spigot-1.12.2.jar nogui`
+   ` cd /opt/minecraft/ && sudo java -Xms1024M -Xmx2048M -jar /opt/minecraft/spigot-1.12.2.jar nogui`
 
 We will save the file and make it executable
 - `chmod u+x minecraft.sh`
 Lets start the server
 - `screen`   <---hit enter at the message that appears.
-- `sudo /home/pi/startup/minecraft.sh`
+- `sudo /opt/scripts/minecraft.sh`
 
 To exit the screen session hit _CTRL AD_
 
-## Configure Minecraft to start on bootup
+### Configure Minecraft to start on bootup
 We will edit the /etc/rc.local file
 - `sudo nano /etc/rc.local`
 
 Insert the following before the last line _exit 0_
-- `screen -dm -S minecraft /home/pi/startup/minecraft.sh`
+- `screen -dm -S minecraft /opt/scripts/minecraft.sh`
 
-## After bootup the following can be run
+### After bootup the following can be run
 - `sudo screen -r minecraft`
 
-## Creating Backup
+### Creating Backup
 This will permit restoring the minecraft server
-- `cd ~`
-- `tar -zcvf codeblockers_backup.tar.gz codeblockers`
+- `cd /opt`
+- `tar -zcvf minecraft_backup.tar.gz minecraft`
 
 
-We can now copy this zip file to a safe location or server. Restoration should be done regularly considering we have to entertain others and their achievements. This is this area which needs technical support in great details.
-
- 
+We can now copy this zip file to a safe location or server. Restoration should be done regularly considering we have to entertain others and their achievements. This is the area which needs technical support in great details.
 

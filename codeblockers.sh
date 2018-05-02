@@ -22,12 +22,12 @@ sleep 2
 echo "update and upgrade"
 sudo apt-get update && sudo apt-get -y upgrade
 echo "install git"
-echo "install screen to help run minecraft server console"
+echo "install screen to help run minecraft server console as Admin"
 sudo apt-get install screen
 echo "create a folder"
 cd ~
-mkdir codeblockers
-cd codeblockers
+mkdir ~/codeblockers
+cd ~/codeblockers
 sleep 1
 echo "download buildtools"
 wget https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
@@ -45,7 +45,7 @@ echo "bootup server automatically with a script"
 mkdir ~/startup
 cd ~/startup
 nano codebminecraft.sh
-echo "insert the command to run the server in the bash script you create"
+echo "insert the java command above to run the server in the bash script you create"
 sleep 2
 echo "make the script executable"
 chmod u+x codebminecraft.sh
@@ -54,7 +54,7 @@ screen
 sudo ~/startup/minecraft.sh
 echo "to exit screen use CTRL AD"
 sleep 1
-echo "lets save our working serving"
+echo "lets save our working server"
 cd ~
 tar -zcvf codebminecraft_backup.tar.gz codeblockers
 
