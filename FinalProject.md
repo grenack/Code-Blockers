@@ -75,6 +75,7 @@ The following characteristics describe the TCP;
  b. SSH : Secure Shell is the protocol used to access any of the servers
 
  c. Firewall: The server needs to be protected from external access. The following will be added in the iptables.
+
 **`-A INPUT -p tcp -m state --state NEW --dport 25565 -j ACCEPT`**
 
 
