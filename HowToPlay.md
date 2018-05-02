@@ -1,11 +1,11 @@
 Here are some simple keys to get you start: 
-E - Move forward 
-S - Move backward 
-A - Move left 
-D - Move right 
-Spacebar - Jump 
-Right click mouse - Attach 
-ESC - Exit game
+- E - Move forward 
+- S - Move backward 
+- A - Move left 
+- D - Move right 
+- Spacebar - Jump 
+- Right click mouse - Attach 
+- ESC - Exit game
 
 Please refer to these two URLs if you are new to minecraft;
 
