@@ -1,6 +1,7 @@
 Here are the steps on how to connect to the Minecraft server, please skip to step #4 if you already have an account.
 
-1) Go to https://minecraft.net/en-us and click 'Buy Minecraft' to purchase the game. 
+1) Go to https://minecraft.net/en-us and click 'Buy Minecraft' to purchase the game.
+2018-04-25.png
 2) Enter your address email, password and DOB to create an account.
 3) Choose your operation system (Windows or MAC) and install the application
 4) Lauch the application and you should see more options such as Single Player, Multiplayer and ect.
