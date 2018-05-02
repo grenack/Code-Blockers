@@ -4,7 +4,7 @@ Here are some simple keys to get you start:
 - A - Move left 
 - D - Move right 
 - Spacebar - Jump 
-- Right click mouse - Attach 
+- Right click mouse - Attack
 - ESC - Exit game
 
 Please refer to these two URLs if you are new to minecraft;
