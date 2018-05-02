@@ -2,9 +2,13 @@
 # FINAL PROJECT; Computer Networking 3-LINUX
 
 <div></div>
+
 ![Logo](pic/Craft.jpg)
+
 <div></div>
+
 # TEAM; CODE BLOCKERS
+
 ##### 1. Adam T (Testing) - [Github](https://github.com/Add-man)
 
 ##### 2. Fongoh LOKNJINU (Research) - [Github](https://github.com/loknjinu13)
@@ -329,7 +333,7 @@ The following properties are recommended for a start, but you can change server.
 - server-port=25565
 - debug=false
 - server-ip=
-- spawn-npcs=true
+- spawn-npcs=true![screen](pic/screen1.png)
 - allow-flight=false
 - level-name=world
 - view-distance=10
@@ -437,10 +441,10 @@ It should be noted that, it is preferrable to run the script manually rather tha
 Screen is a full-screen window manager that multiplexes a physical terminal between several processes, typically interactive shells.
 When a program terminates, _screen_ kills the window that contained it. 
 
-**TMUX** is another full-screen window manager with capabilities like _screen_ and is being developed.
+**TMUX** is another full-screen window manager with capabilities like _screen_ and is developed to outperform screen with more funstions.
 These softwares permit us to continue from wherever we stopped in our terminals.
 We installed screen to assist us control our Minecraft Server from its terminal. 
-This is why we include screen in the automatic script to run the server once Ubuntu server boots. This permits the Administrator to run the saerver session.
+This is why we include screen in the automatic script to run the server once Ubuntu server boots. This permits the Administrator to run the server session.
 The following command in our _codebminecraft.sh script_ explains it better;
 When editing the rc.local file
 
